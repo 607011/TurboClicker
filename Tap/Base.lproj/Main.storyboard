@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Tap" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -683,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Turbo Clicker" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -703,15 +705,100 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Tap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="636"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="il3-pa-36z">
+                                <rect key="frame" x="18" y="600" width="444" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" alignment="center" title="Info" id="48r-YQ-DI7">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" maxValue="5" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="6sy-C4-bIM">
+                                <rect key="frame" x="224" y="456" width="32" height="32"/>
+                                <connections>
+                                    <binding destination="J3f-9p-oCO" name="maxValue" keyPath="values.countdownSecs" id="cJG-M2-ohG">
+                                        <dictionary key="options">
+                                            <integer key="NSNullPlaceholder" value="5"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="74c-zO-Enb">
+                                <rect key="frame" x="231" y="420" width="19" height="28"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="0" id="Tx0-f1-DYD">
+                                    <font key="font" metaFont="system" size="24"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S6E-Sy-HKH">
+                                <rect key="frame" x="207" y="396" width="66" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Highscore" id="Hya-BS-4l9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z1R-IZ-waU">
+                                <rect key="frame" x="233" y="368" width="15" height="20"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="0" id="UaR-vW-NSy">
+                                    <font key="font" metaFont="systemSemibold" size="17"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H3s-9u-Blz">
+                                <rect key="frame" x="144" y="500" width="192" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="AN0-ZR-z7T"/>
+                                    <constraint firstAttribute="width" constant="192" id="P85-iJ-5Xw"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" title="Tap" bezelStyle="shadowlessSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uK3-rc-FEo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tapped:" target="XfG-lQ-9wD" id="IeW-GL-8Sn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6sy-C4-bIM" firstAttribute="top" secondItem="H3s-9u-Blz" secondAttribute="bottom" constant="12" id="0Jv-7Z-35E"/>
+                            <constraint firstItem="Z1R-IZ-waU" firstAttribute="top" secondItem="S6E-Sy-HKH" secondAttribute="bottom" constant="8" symbolic="YES" id="28O-aa-m4X"/>
+                            <constraint firstItem="H3s-9u-Blz" firstAttribute="top" secondItem="il3-pa-36z" secondAttribute="bottom" constant="8" id="672-mL-aDR"/>
+                            <constraint firstItem="74c-zO-Enb" firstAttribute="centerX" secondItem="S6E-Sy-HKH" secondAttribute="centerX" id="9Lj-pl-yhE"/>
+                            <constraint firstItem="il3-pa-36z" firstAttribute="centerX" secondItem="H3s-9u-Blz" secondAttribute="centerX" id="Bc2-2M-qDL"/>
+                            <constraint firstItem="S6E-Sy-HKH" firstAttribute="centerX" secondItem="Z1R-IZ-waU" secondAttribute="centerX" id="Czv-Cl-nDj"/>
+                            <constraint firstItem="il3-pa-36z" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="QqM-2h-hpO"/>
+                            <constraint firstAttribute="trailing" secondItem="il3-pa-36z" secondAttribute="trailing" constant="20" symbolic="YES" id="SGe-sb-oUW"/>
+                            <constraint firstItem="74c-zO-Enb" firstAttribute="top" secondItem="6sy-C4-bIM" secondAttribute="bottom" constant="8" symbolic="YES" id="Ujj-KF-fjD"/>
+                            <constraint firstItem="Z1R-IZ-waU" firstAttribute="top" secondItem="S6E-Sy-HKH" secondAttribute="bottom" constant="10" id="W4a-3d-10l"/>
+                            <constraint firstItem="74c-zO-Enb" firstAttribute="top" secondItem="6sy-C4-bIM" secondAttribute="bottom" constant="10" id="WUC-HC-E1W"/>
+                            <constraint firstItem="H3s-9u-Blz" firstAttribute="centerX" secondItem="6sy-C4-bIM" secondAttribute="centerX" id="ezl-mo-Swb"/>
+                            <constraint firstItem="il3-pa-36z" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="fae-YV-PTB"/>
+                            <constraint firstItem="6sy-C4-bIM" firstAttribute="centerX" secondItem="74c-zO-Enb" secondAttribute="centerX" id="hUu-NM-KBu"/>
+                            <constraint firstItem="S6E-Sy-HKH" firstAttribute="top" secondItem="74c-zO-Enb" secondAttribute="bottom" constant="10" id="n1l-3C-N5Y"/>
+                            <constraint firstItem="S6E-Sy-HKH" firstAttribute="top" secondItem="74c-zO-Enb" secondAttribute="bottom" constant="8" symbolic="YES" id="rUj-Bf-e76"/>
+                            <constraint firstItem="6sy-C4-bIM" firstAttribute="top" secondItem="H3s-9u-Blz" secondAttribute="bottom" constant="10" id="zXS-6h-WuY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="highscoreLabel" destination="Z1R-IZ-waU" id="W4f-3h-WMg"/>
+                        <outlet property="infoLabel" destination="il3-pa-36z" id="ep7-HS-ZwF"/>
+                        <outlet property="progressIndicator" destination="6sy-C4-bIM" id="RK7-2t-tmx"/>
+                        <outlet property="tapButton" destination="H3s-9u-Blz" id="PR5-ej-11Q"/>
+                        <outlet property="tapsLabel" destination="74c-zO-Enb" id="1CD-6d-Bhg"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="J3f-9p-oCO"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="838"/>
         </scene>
     </scenes>
 </document>
